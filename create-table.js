@@ -3,13 +3,21 @@
 
   function createTable (rows) {
     const table = document.createElement('table');
-    const columnNames = Object.keys(rows[0]);
+    const columnNames = getColumnNames(rows[0]);
 
     table.appendChild(createTableHead(columnNames));
     table.appendChild(createTableBody(rows));
     return table;
   }
-
+  function getColumnNames (row) {
+    return Object.keys(row).map(function (name) {
+      let words = name.split('_');
+      words = words.map(function (word) {
+        return word[0].toUpperCase() + word.slice(1);
+      });
+      return words.join(' ');
+    });
+  }
   function createTableHead (columnNames) {
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
