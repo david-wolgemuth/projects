@@ -24,6 +24,7 @@
     for (let col of columnNames) {
       let th = document.createElement('th');
       th.innerText = col;
+      th.textContent = col;  // Firefox
       headerRow.appendChild(th);
     }
     thead.appendChild(headerRow);
@@ -43,6 +44,7 @@
     for (let key in row) {
       let td = document.createElement('td');
       td.innerText = row[key];
+      td.textContent = row[key];  // Firefox
       tr.appendChild(td);
     }
     return tr;
